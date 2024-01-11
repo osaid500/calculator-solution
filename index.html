@@ -14,24 +14,49 @@
 
     <title>Frontend Mentor | Calculator app</title>
   </head>
-  <body>
+  <body class="second-">
     <main class="container">
       <section class="top-section">
-        <h1>calc</h1>
-        <span>THEME</span>
+        <h1 class="top-title">calc</h1>
+        <span class="theme-text">THEME</span>
         <div class="theme-section">
           <div class="theme-numbers">
             <span class="theme-number" data-theme="1">1</span>
             <span class="theme-number" data-theme="2">2</span>
             <span class="theme-number" data-theme="3">3</span>
           </div>
-          <div class="slider-container">
-            <div class="slider-track"></div>
+          <div class="slider-track">
             <div class="slider-thumb"></div>
           </div>
         </div>
       </section>
-      <section class="middle-section"></section>
+      <section class="screen-section">
+        <div class="screen-text" aria-live="polite">399,981</div>
+      </section>
+      <section class="keypad-section">
+        <button class="calculator-key">7</button>
+        <button class="calculator-key">8</button>
+        <button class="calculator-key">9</button>
+        <button class="calculator-key special-function">DEL</button>
+
+        <button class="calculator-key">4</button>
+        <button class="calculator-key">5</button>
+        <button class="calculator-key">6</button>
+        <button class="calculator-key">+</button>
+
+        <button class="calculator-key">1</button>
+        <button class="calculator-key">2</button>
+        <button class="calculator-key">3</button>
+        <button class="calculator-key">-</button>
+
+        <button class="calculator-key">.</button>
+        <button class="calculator-key">0</button>
+        <button class="calculator-key">/</button>
+        <button class="calculator-key">x</button>
+
+        <button class="special-key special-function">RESET</button>
+        <button class="special-key equal-key">=</button>
+      </section>
       <section class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"

@@ -3,6 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap");
 
 :root {
+  --duration: 0.2s;
   --main-background: hsl(222, 26%, 31%);
   --top-section-text: white;
   --screen-background: hsl(224, 36%, 15%);
@@ -20,6 +21,11 @@
 
   --attribution-text: var(--primary-text-color);
   --attribution-text-highlighted: hsl(0, 0%, 66%);
+
+  /* hover */
+  --highlighted-button: hsl(30, 25%, 100%);
+  --highlighted-thumb: hsl(6, 63%, 70%);
+  --highlighted-special-function: hsl(211, 36%, 73%);
 }
 
 .second-theme {
@@ -40,6 +46,36 @@
 
   --attribution-text: var(--key-text-color);
   --attribution-text-highlighted: var(--special-function);
+
+  /* hover */
+  --highlighted-button: hsl(45, 7%, 100%);
+  --highlighted-thumb: hsl(25, 98%, 60%);
+  --highlighted-special-function: hsl(185, 49%, 50%);
+}
+
+.third-theme {
+  --main-background: hsl(268, 75%, 9%);
+  --top-section-text: hsl(52, 100%, 62%);
+  --screen-background: hsl(268, 71%, 12%);
+  --screen-text: hsl(52, 100%, 62%);
+  --keypad-background: hsl(268, 71%, 12%);
+  --shadow-size: 0px 2.5px 0px 0px;
+  --key: hsl(268, 47%, 21%);
+  --key-shadow: hsl(290, 70%, 36%) var(--shadow-size);
+  --special-function: hsl(281, 89%, 26%);
+  --special-function-shadow: hsl(285, 91%, 52%) var(--shadow-size);
+  --thumb-background: hsl(176, 100%, 44%);
+  --equal-operator-shadow: hsl(177, 92%, 70%) var(--shadow-size);
+  --key-text-color: hsl(52, 100%, 62%);
+  --primary-text-color: hsl(0, 0%, 100%);
+
+  --attribution-text: var(--key-text-color);
+  --attribution-text-highlighted: var(--thumb-background);
+
+  /* hover */
+  --highlighted-button: hsl(268, 57%, 43%);
+  --highlighted-thumb: hsl(186, 100%, 76%);
+  --highlighted-special-function: hsl(281, 89%, 38%);
 }
 
 body {
@@ -58,6 +94,10 @@ body {
   color: var(--primary-text-color);
   display: flex;
   flex-direction: column;
+}
+
+.container > * {
+  transition: var(--duration);
 }
 
 .top-section {
@@ -105,6 +145,9 @@ body {
 .theme-number {
   width: 11px;
   text-align: center;
+  cursor: pointer;
+  padding-top: 1.5px;
+  transition: var(--duration);
 }
 
 .slider-track {
@@ -115,6 +158,7 @@ body {
   display: flex;
   align-items: center;
   padding: 0 3px;
+  cursor: pointer;
   /* justify-content: end; */
 }
 
@@ -123,6 +167,12 @@ body {
   width: 11px;
   height: 11px;
   border-radius: 100%;
+  transition: var(--duration);
+}
+
+.slider-track:hover .slider-thumb,
+.theme-number:hover {
+  background-color: var(--highlighted-thumb);
 }
 
 /* SCREEN SECTION */
@@ -164,6 +214,7 @@ body {
   padding: 0;
   padding-top: 6px;
   border-radius: 7px;
+  transition: var(--duration);
 }
 
 .calculator-key {
@@ -174,10 +225,15 @@ body {
   box-shadow: var(--key-shadow);
 }
 
+.calculator-key:hover {
+  background-color: var(--highlighted-button);
+}
+
 .special-key {
   grid-column: span 2;
   font-size: 32px;
   color: var(--primary-text-color);
+  height: 40px;
 }
 
 .special-function {
@@ -187,9 +243,22 @@ body {
   box-shadow: var(--special-function-shadow);
 }
 
+.special-function:hover {
+  background-color: var(--highlighted-special-function);
+}
+
 .equal-key {
   background-color: var(--thumb-background);
   box-shadow: var(--equal-operator-shadow);
+  font-size: 20px;
+}
+
+.third-theme .equal-key {
+  color: hsl(198, 20%, 13%);
+}
+
+.equal-key:hover {
+  background-color: var(--highlighted-thumb);
 }
 
 /* ATTRIBUTION */

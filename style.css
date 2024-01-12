@@ -51,6 +51,8 @@
   --highlighted-button: hsl(45, 7%, 100%);
   --highlighted-thumb: hsl(25, 98%, 60%);
   --highlighted-special-function: hsl(185, 49%, 50%);
+
+  --thumb-position: center;
 }
 
 .third-theme {
@@ -76,6 +78,8 @@
   --highlighted-button: hsl(268, 57%, 43%);
   --highlighted-thumb: hsl(186, 100%, 76%);
   --highlighted-special-function: hsl(281, 89%, 38%);
+
+  --thumb-position: flex-end;
 }
 
 body {
@@ -89,7 +93,7 @@ body {
 
 .container {
   width: 400px;
-  height: 500px;
+  min-height: 500px;
   font-family: "League Spartan";
   color: var(--primary-text-color);
   display: flex;
@@ -159,7 +163,7 @@ body {
   align-items: center;
   padding: 0 3px;
   cursor: pointer;
-  /* justify-content: end; */
+  justify-content: var(--thumb-position);
 }
 
 .slider-thumb {
@@ -179,7 +183,7 @@ body {
 
 .screen-section {
   background-color: var(--screen-background);
-  height: 18%;
+  min-height: 90px;
   border-radius: 5px;
   margin-bottom: 17px;
   display: flex;
@@ -189,8 +193,12 @@ body {
 }
 
 .screen-text {
+  padding-top: 8px;
   font-size: 40px;
+  text-align: end;
   color: var(--screen-text);
+  width: 100%;
+  word-wrap: break-word;
 }
 
 /* KEYPAD SECTION */

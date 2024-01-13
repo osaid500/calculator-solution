@@ -9,7 +9,6 @@ let currentValue = "0";
 
 function updateScreenText() {
   screenText.textContent = currentValue;
-  console.log(currentValue);
 }
 
 function calculate() {
@@ -50,7 +49,7 @@ function handleClick(e) {
   }
 }
 
-function toggleTheme(e) {
+function handleNumberClick(e) {
   changeTheme(e.target.dataset.theme);
 }
 
@@ -72,25 +71,18 @@ function changeTheme(value) {
 }
 
 function handleThemeToggle(e) {
-  //   if (!e.target.classList.contains("slider-track")) return;
-  //   console.log(e.x);
-  //   console.log(e.x - e.target.offsetLeft);
   const clickLocationInsideTrack = e.x - this.offsetLeft;
-  console.log(clickLocationInsideTrack, 0.33 * this.offsetWidth);
   if (clickLocationInsideTrack < (1 / 3) * this.offsetWidth) {
     changeTheme("first");
-    console.log("first");
   } else if (clickLocationInsideTrack < (2 / 3) * this.offsetWidth) {
     changeTheme("second");
-    console.log("second");
   } else {
     changeTheme("third");
-    console.log("third");
   }
 }
 
 keys.forEach((key) => key.addEventListener("click", handleClick));
 themeNumbers.forEach((themenumber) =>
-  themenumber.addEventListener("click", toggleTheme)
+  themenumber.addEventListener("click", handleNumberClick)
 );
 sliderTrack.addEventListener("click", handleThemeToggle);

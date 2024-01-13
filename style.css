@@ -28,60 +28,6 @@
   --highlighted-special-function: hsl(211, 36%, 73%);
 }
 
-.second-theme {
-  --main-background: hsl(0, 0%, 90%);
-  --top-section-text: var(--key-text-color);
-  --screen-background: hsl(0, 0%, 93%);
-  --screen-text: var(--key-text-color);
-  --keypad-background: hsl(0, 5%, 81%);
-  --shadow-size: 0px 2.5px 0px 0px;
-  --key: hsl(45, 7%, 89%);
-  --key-shadow: hsl(28, 16%, 65%) var(--shadow-size);
-  --special-function: hsl(185, 42%, 37%);
-  --special-function-shadow: hsl(185, 58%, 25%) var(--shadow-size);
-  --thumb-background: hsl(25, 98%, 40%);
-  --equal-operator-shadow: hsl(25, 99%, 27%) var(--shadow-size);
-  --key-text-color: hsl(60, 10%, 19%);
-  --primary-text-color: hsl(0, 0%, 100%);
-
-  --attribution-text: var(--key-text-color);
-  --attribution-text-highlighted: var(--special-function);
-
-  /* hover */
-  --highlighted-button: hsl(45, 7%, 100%);
-  --highlighted-thumb: hsl(25, 98%, 60%);
-  --highlighted-special-function: hsl(185, 49%, 50%);
-
-  --thumb-position: center;
-}
-
-.third-theme {
-  --main-background: hsl(268, 75%, 9%);
-  --top-section-text: hsl(52, 100%, 62%);
-  --screen-background: hsl(268, 71%, 12%);
-  --screen-text: hsl(52, 100%, 62%);
-  --keypad-background: hsl(268, 71%, 12%);
-  --shadow-size: 0px 2.5px 0px 0px;
-  --key: hsl(268, 47%, 21%);
-  --key-shadow: hsl(290, 70%, 36%) var(--shadow-size);
-  --special-function: hsl(281, 89%, 26%);
-  --special-function-shadow: hsl(285, 91%, 52%) var(--shadow-size);
-  --thumb-background: hsl(176, 100%, 44%);
-  --equal-operator-shadow: hsl(177, 92%, 70%) var(--shadow-size);
-  --key-text-color: hsl(52, 100%, 62%);
-  --primary-text-color: hsl(0, 0%, 100%);
-
-  --attribution-text: var(--key-text-color);
-  --attribution-text-highlighted: var(--thumb-background);
-
-  /* hover */
-  --highlighted-button: hsl(268, 57%, 43%);
-  --highlighted-thumb: hsl(186, 100%, 76%);
-  --highlighted-special-function: hsl(281, 89%, 38%);
-
-  --thumb-position: flex-end;
-}
-
 body {
   margin: 0;
   background-color: var(--main-background);
@@ -275,10 +221,142 @@ body {
   font-size: 11px;
   text-align: center;
   color: var(--attribution-text);
+  transition: 3s;
 }
+
 .attribution a {
   color: var(--attribution-text-highlighted);
   text-decoration: none;
+  transition: var(--duration);
+}
+
+.attribution a:hover {
+  color: var(--highlighted-thumb);
 }
 
 /* THEMES */
+
+.second-theme {
+  --main-background: hsl(0, 0%, 90%);
+  --top-section-text: var(--key-text-color);
+  --screen-background: hsl(0, 0%, 93%);
+  --screen-text: var(--key-text-color);
+  --keypad-background: hsl(0, 5%, 81%);
+  --shadow-size: 0px 2.5px 0px 0px;
+  --key: hsl(45, 7%, 89%);
+  --key-shadow: hsl(28, 16%, 65%) var(--shadow-size);
+  --special-function: hsl(185, 42%, 37%);
+  --special-function-shadow: hsl(185, 58%, 25%) var(--shadow-size);
+  --thumb-background: hsl(25, 98%, 40%);
+  --equal-operator-shadow: hsl(25, 99%, 27%) var(--shadow-size);
+  --key-text-color: hsl(60, 10%, 19%);
+  --primary-text-color: hsl(0, 0%, 100%);
+
+  --attribution-text: var(--key-text-color);
+  --attribution-text-highlighted: var(--special-function);
+
+  /* hover */
+  --highlighted-button: hsl(45, 7%, 100%);
+  --highlighted-thumb: hsl(25, 98%, 60%);
+  --highlighted-special-function: hsl(185, 49%, 50%);
+
+  --thumb-position: center;
+}
+
+.third-theme {
+  --main-background: hsl(268, 75%, 9%);
+  --top-section-text: hsl(52, 100%, 62%);
+  --screen-background: hsl(268, 71%, 12%);
+  --screen-text: hsl(52, 100%, 62%);
+  --keypad-background: hsl(268, 71%, 12%);
+  --shadow-size: 0px 2.5px 0px 0px;
+  --key: hsl(268, 47%, 21%);
+  --key-shadow: hsl(290, 70%, 36%) var(--shadow-size);
+  --special-function: hsl(281, 89%, 26%);
+  --special-function-shadow: hsl(285, 91%, 52%) var(--shadow-size);
+  --thumb-background: hsl(176, 100%, 44%);
+  --equal-operator-shadow: hsl(177, 92%, 70%) var(--shadow-size);
+  --key-text-color: hsl(52, 100%, 62%);
+  --primary-text-color: hsl(0, 0%, 100%);
+
+  --attribution-text: var(--key-text-color);
+  --attribution-text-highlighted: var(--thumb-background);
+
+  /* hover */
+  --highlighted-button: hsl(268, 57%, 43%);
+  --highlighted-thumb: hsl(186, 100%, 76%);
+  --highlighted-special-function: hsl(281, 89%, 38%);
+
+  --thumb-position: flex-end;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 300px) {
+  body {
+    max-width: 100%;
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1%;
+  }
+
+  .keypad-section {
+    grid-template-columns: repeat(2, 40%);
+  }
+
+  .calculator-key {
+    width: 100%;
+  }
+
+  .special-function {
+    font-size: 15px;
+  }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 600px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  .container {
+    width: 90%;
+    height: 90%;
+  }
+
+  .top-section {
+    padding: 10px;
+  }
+
+  .theme-text {
+    padding: 5px;
+  }
+
+  .top-section ~ section:not(.attribution) {
+    border-radius: 13px;
+  }
+
+  .keypad-section {
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+    gap: 20px;
+    overflow: hidden;
+  }
+
+  .calculator-key {
+    width: 100%;
+    height: 100%;
+  }
+
+  .special-key {
+    width: 100%;
+    height: 100%;
+  }
+}

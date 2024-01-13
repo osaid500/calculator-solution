@@ -9,6 +9,7 @@ let currentValue = "0";
 
 function updateScreenText() {
   screenText.textContent = currentValue;
+  localStorage.setItem("screen-text", currentValue);
 }
 
 function calculate() {
@@ -58,14 +59,17 @@ function changeTheme(value) {
     case "second":
       document.body.classList.add("second-theme");
       document.body.classList.remove("third-theme");
+      localStorage.setItem("theme", "second-theme");
       break;
     case "third":
       document.body.classList.add("third-theme");
       document.body.classList.remove("second-theme");
+      localStorage.setItem("theme", "third-theme");
       break;
     default:
       document.body.classList.remove("second-theme");
       document.body.classList.remove("third-theme");
+      localStorage.setItem("theme", "");
       break;
   }
 }
@@ -86,3 +90,15 @@ themeNumbers.forEach((themenumber) =>
   themenumber.addEventListener("click", handleNumberClick)
 );
 sliderTrack.addEventListener("click", handleThemeToggle);
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (localStorage.getItem("theme")) {
+    document.body.classList.add(localStorage.getItem("theme"));
+  }
+
+  if (localStorage.getItem("screen-text")) {
+    const savedText = localStorage.getItem("screen-text");
+    currentValue = savedText;
+    screenText.textContent = currentValue;
+  }
+});

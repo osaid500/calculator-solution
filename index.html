@@ -18,15 +18,22 @@
     <main class="container">
       <section class="top-section">
         <h1 class="top-title">calc</h1>
-        <span class="theme-text">THEME</span>
         <div class="theme-section">
-          <div class="theme-numbers">
-            <span class="theme-number" data-theme="first">1</span>
-            <span class="theme-number" data-theme="second">2</span>
-            <span class="theme-number" data-theme="third">3</span>
-          </div>
-          <div class="slider-track">
-            <div class="slider-thumb"></div>
+          <label class="theme-text" for="range">THEME</label>
+          <div class="theme-preference-section">
+            <div class="theme-numbers" aria-hidden="true">
+              <span class="theme-number" data-theme="1">1</span>
+              <span class="theme-number" data-theme="2">2</span>
+              <span class="theme-number" data-theme="3">3</span>
+            </div>
+            <input
+              class="slider-range"
+              id="range"
+              type="range"
+              min="1"
+              max="3"
+              value="1"
+            />
           </div>
         </div>
       </section>
@@ -42,20 +49,20 @@
         <button class="calculator-key">4</button>
         <button class="calculator-key">5</button>
         <button class="calculator-key">6</button>
-        <button class="calculator-key">+</button>
+        <button class="calculator-key">&#43;</button>
 
         <button class="calculator-key">1</button>
         <button class="calculator-key">2</button>
         <button class="calculator-key">3</button>
-        <button class="calculator-key">-</button>
+        <button class="calculator-key">&#8722;</button>
 
         <button class="calculator-key">.</button>
         <button class="calculator-key">0</button>
-        <button class="calculator-key">/</button>
-        <button class="calculator-key">x</button>
+        <button class="calculator-key">&#247;</button>
+        <button class="calculator-key">&#215;</button>
 
         <button class="special-key special-function">RESET</button>
-        <button class="special-key equal-key">=</button>
+        <button class="special-key equal-key">&#61;</button>
       </section>
       <section class="attribution">
         Challenge by

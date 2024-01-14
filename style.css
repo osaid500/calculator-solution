@@ -68,28 +68,30 @@ body {
 .theme-text {
   font-size: 7px;
   letter-spacing: 1px;
-  padding: 6px;
+  padding: 6px 18px;
   color: var(--top-section-text);
 }
 
 .theme-section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
+  align-items: end;
 }
 
-.theme-section > * {
-  box-sizing: border-box;
+.theme-preference-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .theme-numbers {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
   font-size: 10px;
   padding: 0 3px;
   color: var(--top-section-text);
+  margin-bottom: 0.2rem;
 }
 
 .theme-number {
@@ -100,27 +102,42 @@ body {
   transition: var(--duration);
 }
 
-.slider-track {
+/* styling the range for theme selection */
+.slider-range {
+  -webkit-appearance: none;
+  appearance: none;
   background: var(--keypad-background);
   width: 50px;
   height: 17px;
+  margin: 0;
+  box-sizing: border-box;
   border-radius: 9px;
-  display: flex;
-  align-items: center;
   padding: 0 3px;
   cursor: pointer;
-  justify-content: var(--thumb-position);
 }
 
-.slider-thumb {
-  background-color: var(--thumb-background);
+.slider-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
   width: 11px;
   height: 11px;
-  border-radius: 100%;
+  background-color: var(--thumb-background);
+  border-radius: 50%;
+  cursor: pointer;
   transition: var(--duration);
 }
 
-.slider-track:hover .slider-thumb,
+.slider-range::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  background-color: var(--thumb-background);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: var(--duration);
+}
+
+.slider-range:hover::-webkit-slider-thumb,
 .theme-number:hover {
   background-color: var(--highlighted-thumb);
 }
@@ -259,8 +276,6 @@ body {
   --highlighted-button: hsl(45, 7%, 100%);
   --highlighted-thumb: hsl(25, 98%, 60%);
   --highlighted-special-function: hsl(185, 49%, 50%);
-
-  --thumb-position: center;
 }
 
 .third-theme {
@@ -286,8 +301,6 @@ body {
   --highlighted-button: hsl(268, 57%, 43%);
   --highlighted-thumb: hsl(186, 100%, 76%);
   --highlighted-special-function: hsl(281, 89%, 38%);
-
-  --thumb-position: flex-end;
 }
 
 /* MEDIA QUERIES */
@@ -306,6 +319,11 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1%;
+  }
+
+  .theme-section {
+    flex-direction: column;
+    align-items: center;
   }
 
   .keypad-section {
@@ -338,7 +356,7 @@ body {
   }
 
   .theme-text {
-    padding: 5px;
+    padding: 5px 16px;
   }
 
   .top-section ~ section:not(.attribution) {

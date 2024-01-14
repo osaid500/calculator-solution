@@ -1,9 +1,9 @@
 const themeNumbers = document.querySelectorAll(".theme-number");
-const sliderTrack = document.querySelector(".slider-track");
 const screenText = document.querySelector(".screen-text");
 const keypadSection = document.querySelector(".keypad-section");
 const keys = keypadSection.querySelectorAll("button");
-const expressions = ["+", "-", "x", "/"];
+const range = document.querySelector("#range");
+const expressions = ["+", "−", "×", "÷"];
 
 let currentValue = "0";
 
@@ -18,13 +18,20 @@ function calculate() {
     Number(lastDigit) &&
     expressions.some((expression) => currentValue.includes(expression))
   ) {
-    currentValue = eval(currentValue.replace("x", "*")).toString();
+    currentValue = eval(
+      currentValue.replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-")
+    ).toString();
     updateScreenText();
   }
 }
 
+function isOperator(value) {
+  return expressions.some((expression) => value === expression);
+}
+
 function handleClick(e) {
   let value = e.target.textContent;
+  if (currentValue.includes(value) && value === ".") return;
   switch (value) {
     case "DEL":
       if (currentValue.length > 1) {
@@ -42,7 +49,13 @@ function handleClick(e) {
       calculate();
       break;
     default:
-      if (!Number(value.slice(-1)) && !Number(currentValue.slice(-1))) return;
+      if (
+        value !== "." &&
+        isOperator(value) &&
+        isOperator(currentValue.slice(-1))
+      ) {
+        return;
+      }
       currentValue =
         currentValue !== "0" ? `${currentValue}${value}` : `${value}`;
       updateScreenText();
@@ -51,49 +64,43 @@ function handleClick(e) {
 }
 
 function handleNumberClick(e) {
-  changeTheme(e.target.dataset.theme);
+  const value = e.target.dataset.theme || e.target.value;
+  updateTheme(value);
 }
 
-function changeTheme(value) {
+function updateTheme(value) {
+  range.value = value;
   switch (value) {
-    case "second":
+    case "1":
+      document.body.classList.remove("second-theme");
+      document.body.classList.remove("third-theme");
+      localStorage.setItem("theme", "1");
+      break;
+    case "2":
       document.body.classList.add("second-theme");
       document.body.classList.remove("third-theme");
-      localStorage.setItem("theme", "second-theme");
+      localStorage.setItem("theme", "2");
       break;
-    case "third":
+    case "3":
       document.body.classList.add("third-theme");
       document.body.classList.remove("second-theme");
-      localStorage.setItem("theme", "third-theme");
+      localStorage.setItem("theme", "3");
       break;
     default:
-      document.body.classList.remove("second-theme");
-      document.body.classList.remove("third-theme");
-      localStorage.setItem("theme", "");
       break;
   }
 }
 
-function handleThemeToggle(e) {
-  const clickLocationInsideTrack = e.x - this.offsetLeft;
-  if (clickLocationInsideTrack < (1 / 3) * this.offsetWidth) {
-    changeTheme("first");
-  } else if (clickLocationInsideTrack < (2 / 3) * this.offsetWidth) {
-    changeTheme("second");
-  } else {
-    changeTheme("third");
-  }
-}
-
-keys.forEach((key) => key.addEventListener("click", handleClick));
+range.addEventListener("change", handleNumberClick);
 themeNumbers.forEach((themenumber) =>
   themenumber.addEventListener("click", handleNumberClick)
 );
-sliderTrack.addEventListener("click", handleThemeToggle);
+keys.forEach((key) => key.addEventListener("click", handleClick));
 
 document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("theme")) {
-    document.body.classList.add(localStorage.getItem("theme"));
+    const storedTheme = localStorage.getItem("theme");
+    updateTheme(storedTheme);
   }
 
   if (localStorage.getItem("screen-text")) {
